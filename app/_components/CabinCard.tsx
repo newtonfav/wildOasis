@@ -1,6 +1,15 @@
 import { UsersIcon } from "@heroicons/react/24/solid";
 
-function CabinCard({ cabin }) {
+export interface Cabin {
+  id: string;
+  name: string;
+  maxCapacity: number;
+  regularPrice: number;
+  discount: number;
+  image: string;
+}
+
+function CabinCard({ cabin }: { cabin: Cabin }) {
   const { id, name, maxCapacity, regularPrice, discount, image } = cabin;
 
   return (

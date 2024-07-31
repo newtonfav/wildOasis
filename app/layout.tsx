@@ -1,9 +1,20 @@
-import Logo from "./_components/Logo";
-import Navigation from "./_components/Navigation";
+import Header from "@/app/_components/Header";
 import "@/app/_styles/globals.css";
 
+import { Josefin_Sans } from "next/font/google";
+
+const josefin = Josefin_Sans({
+  subsets: ["latin"],
+  display: "swap",
+});
+
 export const metadata = {
-  title: "Wild Oasis",
+  title: {
+    template: "%s | Wild Oasis",
+    default: "Wild Oasis",
+  },
+  description:
+    "Luxurious cabin hotel, located in the heart of the Italian Dolomites, surrounded by beautiful mountians and natural forests.",
 };
 
 export default function RootLayout({
@@ -13,15 +24,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <header>
-          <Logo />
-          <Navigation />
-        </header>
+      <body
+        className={`${josefin.className} bg-primary-950 text-primary-100 min-h-screen flex flex-col`}
+      >
+        <Header />
 
-        <main>{children}</main>
-
-        <footer>@Wild Oasis</footer>
+        <div className="flex-1 px-8 py-12 grid">
+          <main className="mx-auto w-full max-w-7xl">{children}</main>
+        </div>
       </body>
     </html>
   );
